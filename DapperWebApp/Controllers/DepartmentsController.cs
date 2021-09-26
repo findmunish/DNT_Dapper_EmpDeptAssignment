@@ -30,12 +30,12 @@ namespace DapperWebApp.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            return await _getDepartmentModelById(id, "Create", "View");
+            return await _getDepartmentModelById(id, "DepartmentView", "View");
         }
 
         public IActionResult Create()
         {
-            return View();
+            return View("DepartmentView");
         }
 
         [HttpPost]
@@ -58,7 +58,7 @@ namespace DapperWebApp.Controllers
 
         public async Task<IActionResult> Edit(int id)
         {
-            return await _getDepartmentModelById(id, "Create", "Edit");
+            return await _getDepartmentModelById(id, "DepartmentView", "Edit");
         }
 
         [HttpPost]

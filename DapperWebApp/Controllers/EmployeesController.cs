@@ -37,7 +37,7 @@ namespace DapperWebApp.Controllers
 
         public async Task<IActionResult> Details(int id)
         {
-            return await _getEmployeeModelById(id, "Create", "View");
+            return await _getEmployeeModelById(id, "EmployeeView", "View");
         }
 
         public async Task<IActionResult> Create()
@@ -45,7 +45,7 @@ namespace DapperWebApp.Controllers
             try
             {
                 ViewBag.Departments = await _deptRepo.GetAll();
-                return View();
+                return View("EmployeeView");
             }
             catch (Exception ex)
             {
@@ -76,7 +76,7 @@ namespace DapperWebApp.Controllers
             try
             {
                 ViewBag.Departments = await _deptRepo.GetAll();
-                return await _getEmployeeModelById(id, "Create", "Edit");
+                return await _getEmployeeModelById(id, "EmployeeView", "Edit");
             }
             catch (Exception ex)
             {
