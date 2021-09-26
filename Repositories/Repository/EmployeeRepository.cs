@@ -21,15 +21,15 @@ namespace Repositories.Repository
         {
         }
 
-        public async Task<IEnumerable<Employee>> GetEmployees()
-        {
-            return await GetAll();
-        }
+        //public async Task<IEnumerable<Employee>> GetEmployees()
+        //{
+        //    return await GetAll();
+        //}
 
-        public async Task<Employee> GetEmployee(int id)
-        {
-            return await GetById(id);
-        }
+        //public async Task<Employee> GetEmployee(int id)
+        //{
+        //    return await GetById(id);
+        //}
 
         public async Task<int> CreateEmployee(EmployeeForCreationDto employeeDto)
         {
@@ -58,9 +58,9 @@ namespace Repositories.Repository
             await Update(id, parameters, setEntities);
         }
 
-        public async Task DeleteEmployee(int id)
-        {
-            await Delete(id);
-        }
+        //public async Task DeleteEmployee(int id)
+        //{
+        //    await Delete(id);
+        //}
     }
 }

@@ -21,7 +21,7 @@ namespace DapperWebApp.Controllers
         {
             try
             {
-                var departments = await _departmentRepo.GetDepartments();
+                var departments = await _departmentRepo.GetAll();
                 return View(departments);
             }
             catch (Exception ex)
@@ -85,10 +85,10 @@ namespace DapperWebApp.Controllers
         {
             try
             {
-                var dbDepartmentModel = await _departmentRepo.GetDepartment(id);
+                var dbDepartmentModel = await _departmentRepo.GetById(id);
                 if (dbDepartmentModel == null)
                     return NotFound();
-                await _departmentRepo.DeleteDepartment(id);
+                await _departmentRepo.Delete(id);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -101,7 +101,7 @@ namespace DapperWebApp.Controllers
         {
             try
             {
-                var departmentModel = await _departmentRepo.GetDepartment(id);
+                var departmentModel = await _departmentRepo.GetById(id);
                 departmentModel.ViewType = viewType;
                 return View(renderView, departmentModel);
             }

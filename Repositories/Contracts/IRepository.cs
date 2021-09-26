@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Repositories.Contracts
 {
-    interface IRepository<TEntity, TEntityCreateDto, TEntityUpdateDto>
+    public interface IRepository<TEntity, TEntityCreateDto, TEntityUpdateDto>
         where TEntity: class
         where TEntityCreateDto : class
         where TEntityUpdateDto : class

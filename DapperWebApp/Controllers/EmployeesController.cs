@@ -22,10 +22,10 @@ namespace DapperWebApp.Controllers
         {
             try
             {
-                var employees = await _employeeRepo.GetEmployees();
+                var employees = await _employeeRepo.GetAll();
                 foreach (Employee emp in employees)
                 {
-                    emp.Department = await _deptRepo.GetDepartment(emp.DeptId);
+                    emp.Department = await _deptRepo.GetById(emp.DeptId);
                 }
                 return View(employees);
             }
@@ -44,7 +44,7 @@ namespace DapperWebApp.Controllers
         {
             try
             {
-                ViewBag.Departments = await _deptRepo.GetDepartments();
+                ViewBag.Departments = await _deptRepo.GetAll();
                 return View();
             }
             catch (Exception ex)
@@ -75,7 +75,7 @@ namespace DapperWebApp.Controllers
         {
             try
             {
-                ViewBag.Departments = await _deptRepo.GetDepartments();
+                ViewBag.Departments = await _deptRepo.GetAll();
                 return await _getEmployeeModelById(id, "Create", "Edit");
             }
             catch (Exception ex)
@@ -106,11 +106,11 @@ namespace DapperWebApp.Controllers
         {
             try
             {
-                var dbEmployeeModel = await _employeeRepo.GetEmployee(id);
+                var dbEmployeeModel = await _employeeRepo.GetById(id);
                 if (dbEmployeeModel == null)
                     return NotFound();
 
-                await _employeeRepo.DeleteEmployee(id);
+                await _employeeRepo.Delete(id);
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -123,8 +123,8 @@ namespace DapperWebApp.Controllers
         {
             try
             {
-                var employeeModel = await _employeeRepo.GetEmployee(id);
-                employeeModel.Department = await _deptRepo.GetDepartment(employeeModel.DeptId);
+                var employeeModel = await _employeeRepo.GetById(id);
+                employeeModel.Department = await _deptRepo.GetById(employeeModel.DeptId);
                 employeeModel.ViewType = viewType;
                 return View(renderView, employeeModel);
             }

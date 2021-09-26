@@ -21,15 +21,15 @@ namespace Repositories.Repository
         {
         }
 
-        public async Task<IEnumerable<Department>> GetDepartments()
-        {
-            return await GetAll();
-        }
+        //public async Task<IEnumerable<Department>> GetDepartments()
+        //{
+        //    return await GetAll();
+        //}
 
-        public async Task<Department> GetDepartment(int id)
-        {
-            return await GetById(id);
-        }
+        //public async Task<Department> GetDepartment(int id)
+        //{
+        //    return await GetById(id);
+        //}
 
         public async Task<int> CreateDepartment(DepartmentForCreationDto department)
         {
@@ -52,9 +52,9 @@ namespace Repositories.Repository
             await Update(id, parameters, setEntities);
         }
 
-        public async Task DeleteDepartment(int id)
-        {
-            await Delete(id);
-        }
+        //public async Task DeleteDepartment(int id)
+        //{
+        //    await Delete(id);
+        //}
     }
 }

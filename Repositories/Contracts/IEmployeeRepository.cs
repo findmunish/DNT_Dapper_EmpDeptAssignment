@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Repositories.Contracts
 {
-    public interface IEmployeeRepository //: IRepository<Employee, EmployeeForCreationDto, EmployeeForUpdateDto>
+    public interface IEmployeeRepository : IRepository<Employee, EmployeeForCreationDto, EmployeeForUpdateDto>
     {
-        public Task<IEnumerable<Employee>> GetEmployees();
-        public Task<Employee> GetEmployee(int id);
+        //public Task<IEnumerable<Employee>> GetEmployees();
+        //public Task<Employee> GetEmployee(int id);
         public Task<int> CreateEmployee(EmployeeForCreationDto department);
         public Task UpdateEmployee(int id, EmployeeForUpdateDto company);
-        public Task DeleteEmployee(int id);
+        //public Task DeleteEmployee(int id);
     }
 }
