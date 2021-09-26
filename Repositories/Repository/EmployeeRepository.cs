@@ -44,15 +44,10 @@ namespace Repositories.Repository
             return await Create(parameters, strEntities);
         }
 
-        public async Task DeleteEmployee(int id)
-        {
-            await Delete(id);
-        }
-
         public async Task UpdateEmployee(int id, EmployeeForUpdateDto employeeDto)
         {
             string setEntities = $"SET Name = @Name, Address = @Address, ImagePath = @ImagePath, DeptId = @DeptId ";
-    
+
             var parameters = new DynamicParameters();
 
             parameters.Add("Name", employeeDto.Name, DbType.String);
@@ -61,6 +56,11 @@ namespace Repositories.Repository
             parameters.Add("DeptId", employeeDto.DeptId, DbType.Int64);
 
             await Update(id, parameters, setEntities);
+        }
+
+        public async Task DeleteEmployee(int id)
+        {
+            await Delete(id);
         }
     }
 }
